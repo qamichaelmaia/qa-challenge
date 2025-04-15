@@ -1,0 +1,60 @@
+{
+    "info": {
+      "name": "Joke API Tests",
+      "_postman_id": "abc123-xyz456",
+      "description": "Collection para testar a API de piadas",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "GET Random Joke",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "https://official-joke-api.appspot.com/random_joke",
+            "protocol": "https",
+            "host": ["official-joke-api", "appspot", "com"],
+            "path": ["random_joke"]
+          }
+        },
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "exec": [
+                "pm.test(\"Status code é 200\", function () {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test(\"Resposta é um JSON válido\", function () {",
+                "    pm.response.to.be.withBody;",
+                "    pm.response.to.be.json;",
+                "});",
+                "",
+                "const jsonData = pm.response.json();",
+                "",
+                "pm.test(\"Contém os campos obrigatórios\", function () {",
+                "    pm.expect(jsonData).to.have.all.keys('type', 'setup', 'punchline', 'id');",
+                "});",
+                "",
+                "pm.test(\"Tipos de dados estão corretos\", function () {",
+                "    pm.expect(jsonData.id).to.be.a('number');",
+                "    pm.expect(jsonData.type).to.be.a('string');",
+                "    pm.expect(jsonData.setup).to.be.a('string');",
+                "    pm.expect(jsonData.punchline).to.be.a('string');",
+                "});",
+                "",
+                "pm.test(\"Campos não estão vazios\", function () {",
+                "    pm.expect(jsonData.setup).to.not.be.empty;",
+                "    pm.expect(jsonData.punchline).to.not.be.empty;",
+                "});"
+              ],
+              "type": "text/javascript"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

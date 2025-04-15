@@ -1,0 +1,19 @@
+{
+    "name": "qa-joke-api-tests",
+    "version": "1.0.0",
+    "description": "Desafio técnico - Testes automatizados na API de Piadas usando Postman, Newman e K6",
+    "scripts": {
+      "test": "newman run joke-api-tests.postman_collection.json --iteration-count 100 --delay-request 300 -r cli,htmlextra --reporter-htmlextra-export ./newman-report.html",
+      "load:test": "k6 run --vus 10 --duration 30s k6-script.js --out json=results.json",
+      "cloud:test": "k6 cloud k6-script.js",
+      "report": "node generate-report.js"
+    },
+    "author": "Michael Maia",
+    "license": "MIT",
+    "devDependencies": {
+      "k6-html-reporter": "^1.0.5",
+      "newman": "^6.2.1",
+      "newman-reporter-htmlextra": "^1.23.1"
+    }
+  }
+  

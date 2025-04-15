@@ -50,6 +50,8 @@ Após a execução dos testes com `npm run test`, é gerados automaticamente um 
 
 - Você pode abrir o `newman-report.html` no navegador para visualizar o resultado da execução dos testes de forma interativa.
 
+- ![Demonstração do relatório](./assets/newman.gif)
+
 Após a execução dos testes com `npm run cloud:test`, é disponibilizado um link no terminal com o relatório sendo gerado via k6 cloud, podendo acompanhar a execução em tempo real e também baixar o arquivo em PDF com todas as análises:
 - Pasta `report-cloud-k6` – Relatório geral de execução com análise dos testes em PDF
 ---
